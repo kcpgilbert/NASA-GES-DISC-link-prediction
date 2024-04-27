@@ -6,7 +6,7 @@ from py2neo import Graph, Node, Relationship
 neo4j_auth = os.getenv("NEO4J_AUTH")
 
 
-graph = Graph("bolt://localhost:7687", auth=("neo4j", "linkprediction"))
+graph = Graph("bolt://neo4j_instance_test:7687", auth=("neo4j", "kendallg"))
 
 
 

@@ -15,7 +15,7 @@ neo4j_auth = os.getenv("NEO4J_AUTH")
 
 # NEO4J_AUTH is in the format "username/password", so we split it
 
-graph = Graph("bolt://localhost:7687", auth=("neo4j", "linkprediction"))
+graph = Graph("bolt://neo4j_instance_test:7687", auth=("neo4j", "kendallg"))
 
 
 cwd = os.getcwd()

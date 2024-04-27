@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:4.4
+    container_name: neo4j_instance_test
+    environment:
+      NEO4J_AUTH: neo4j/kendallg  # Ensure consistent use of credentials
+      NEO4JLABS_PLUGINS: '["graph-data-science"]'
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - neo4j_data:/var/lib/neo4j  # Rename the volume to neo4j_data
+    #healthcheck:
+      #test: ["CMD", "curl", "-f", "http://localhost:7474"]
+      #interval: 30s
+      #timeout: 10s
+      #retries: 5
+    networks:
+      - graphdb-network
+    #volumes:
+      #- ./data:/data
+      #- ./logs:/logs
+      #- ./import:/var/lib/neo4j/import
+      #- ./plugins:/var/lib/neo4j/plugins
+    #restart: unless-stopped
+  python_app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: python_instance_test
+    volumes:
+      - ./graph-ingest:/app
+    depends_on:
+      - neo4j
+    command: tail -f /dev/null
+    networks:
+      - graphdb-network
+
+volumes:
+  neo4j_data:
+    driver: local
+
+networks:
+  graphdb-network:
+    driver: bridge

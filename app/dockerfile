@@ -1,0 +1,8 @@
+#Dockerfile
+ARG PY_VER=3.8.11
+FROM python:${PY_VER}
+WORKDIR /app
+COPY ./new_requirements.txt /app/new_requirements.txt
+RUN pip install --no-cache-dir -r /app/new_requirements.txt
+COPY ./graph-ingest /app/graph-ingest
+EXPOSE 8000

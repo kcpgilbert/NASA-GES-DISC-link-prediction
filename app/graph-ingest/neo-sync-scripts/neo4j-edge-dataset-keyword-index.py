@@ -11,7 +11,7 @@ from py2neo import Graph, Node, Relationship
 from py2neo.bulk import create_nodes, merge_nodes, merge_relationships
 
 # Get Neo4j client
-graph = Graph("bolt://localhost:7687", auth=("neo4j", "linkprediction"))
+graph = Graph("bolt://neo4j_instance_test:7687", auth=("neo4j", "kendallg"))
 
 
 cwd = os.getcwd()
