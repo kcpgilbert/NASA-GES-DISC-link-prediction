@@ -6,11 +6,13 @@ services:
     container_name: neo4j_instance_test
     environment:
       NEO4J_AUTH: neo4j/kendallg  # Ensure consistent use of credentials
-      NEO4JLABS_PLUGINS: '["graph-data-science"]'
+      NEO4JLABS_PLUGINS: '["graph-data-science", "apoc"]'
       NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_apoc_export_file_enabled: 'true'
+      NEO4J_apoc_import_file_enabled: 'true'
     ports:
-      - 7474:7474
-      - 7687:7687
+      - "127.0.0.1:7474:7474"  # HTTP, accessible only on localhost
+      - "127.0.0.1:7687:7687"  # Bolt, accessible only on localhost
     volumes:
       - neo4j_data:/var/lib/neo4j  # Rename the volume to neo4j_data
     #healthcheck:
@@ -35,9 +37,12 @@ services:
       - ./graph-ingest:/app
     depends_on:
       - neo4j
-    command: tail -f /dev/null
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root
+    ports:
+      - "127.0.0.1:8888:8888"
     networks:
       - graphdb-network
+
 
 volumes:
   neo4j_data:

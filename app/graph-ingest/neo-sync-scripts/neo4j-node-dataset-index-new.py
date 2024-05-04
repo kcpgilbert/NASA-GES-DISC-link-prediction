@@ -60,7 +60,7 @@ def add_dataset(tx, dataset_data, dataset_id):
 
     # Cypher query to create a Dataset node
     query = (
-        "CREATE (d:Dataset { "
+        "MERGE (d:Dataset { "
         "globalId: $globalId, doi: $doi, shortName: $shortName, "
         "longName: $longName, daac: $daac, abstract: $abstract "
         "})"
