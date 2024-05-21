@@ -37,8 +37,11 @@ services:
       - ./graph-ingest:/app
     depends_on:
       - neo4j
-    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root
+    command: 
+      uvicorn API:app --host 0.0.0.0 --port 8000
+      #jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root
     ports:
+      - "127.0.0.1:8000:8000"
       - "127.0.0.1:8888:8888"
     networks:
       - graphdb-network

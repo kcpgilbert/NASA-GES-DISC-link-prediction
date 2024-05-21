@@ -2,7 +2,13 @@
 ARG PY_VER=3.8.11
 FROM python:${PY_VER}
 WORKDIR /app
-COPY ./new_requirements.txt /app/new_requirements.txt
-RUN pip install --no-cache-dir -r /app/new_requirements.txt
+#COPY ./new_requirements.txt /app/new_requirements.txt
+#RUN pip install --no-cache-dir -r /app/new_requirements.txt
+RUN pip install neo4j==5.13.0
+RUN pip install weaviate-client==3.24.2
+RUN pip install graphdatascience==1.9
+RUN pip install jupyter notebook
+RUN pip install fastapi
+RUN pip install uvicorn
 COPY ./graph-ingest /app/graph-ingest
 EXPOSE 8000
