@@ -10,5 +10,6 @@ RUN pip install graphdatascience==1.9
 RUN pip install jupyter notebook
 RUN pip install fastapi
 RUN pip install uvicorn
+RUN pip install tqdm
 COPY ./graph-ingest /app/graph-ingest
 EXPOSE 8000

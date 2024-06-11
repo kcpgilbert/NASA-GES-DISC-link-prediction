@@ -1,0 +1,2 @@
+2024-06-03 17:31:49,918|__main__|Failed to create uniqueness constraint: {code: Neo.ClientError.Schema.EquivalentSchemaRuleAlreadyExists} {message: An equivalent constraint already exists, 'Constraint( id=4, name='constraint_58765cd9', type='UNIQUENESS', schema=(:ScienceKeyword {globalId}), ownedIndex=3 )'.}
+2024-06-03 17:31:52,797|__main__|Nodes and relationships have been created in the Neo4j database.

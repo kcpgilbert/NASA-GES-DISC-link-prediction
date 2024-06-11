@@ -14,6 +14,7 @@ python neo4j-node-dataset-index-new.py
 
 #python neo4j-node-keyword-index.py
 python neo4j-node-keyword-index-new.py
+#python ingest-node-edge-gcmd-sciencekeywords.py
 
 #python neo4j-node-platform-index.py
 python neo4j-node-platform-index-new.py
@@ -29,6 +30,7 @@ python neo4j-node-investigator-index-new.py
 
 #python neo4j-edge-dataset-keyword-index.py
 python neo4j-edge-dataset-keyword-index-new.py
+#python ingest-edge-dataset-sciencekeyword.py
 
 #python neo4j-edge-dataset-platform-index.py
 python neo4j-edge-dataset-platform-index-new.py
